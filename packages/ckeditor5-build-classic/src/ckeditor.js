@@ -9,8 +9,20 @@ import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classicedi
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
+
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Subscript from '@ckeditor/ckeditor5-basic-styles/src/subscript';
+import Superscript from '@ckeditor/ckeditor5-basic-styles/src/superscript';
+
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+
+import FontSize from '@ckeditor/ckeditor5-font/src/fontsize';
+import FontFamily from '@ckeditor/ckeditor5-font/src/fontfamily';
+
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 import EasyImage from '@ckeditor/ckeditor5-easy-image/src/easyimage';
@@ -29,7 +41,6 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
-import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -38,11 +49,22 @@ ClassicEditor.builtinPlugins = [
 	Essentials,
 	UploadAdapter,
 	Autoformat,
+
 	Bold,
 	Italic,
+	Underline,
+	Strikethrough,
+	Code,
+	Subscript,
+	Superscript,
+
+	Alignment,
+
+	FontSize,
+	FontFamily,
+
 	BlockQuote,
 	CKFinder,
-	CloudServices,
 	EasyImage,
 	Heading,
 	Image,
@@ -67,16 +89,27 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+
 			'bold',
 			'italic',
+			'underline',
+			'strikethrough',
+			'code',
+			'subscript',
+			'superscript',
+
+			'alignment',
+			'fontFamily',
+			'fontSize',
+
 			'link',
 			'bulletedList',
 			'numberedList',
 			'|',
-			'outdent',
 			'indent',
+			'outdent',
 			'|',
-			'uploadImage',
+			'imageUpload',
 			'blockQuote',
 			'insertTable',
 			'mediaEmbed',
@@ -84,6 +117,31 @@ ClassicEditor.defaultConfig = {
 			'redo'
 		]
 	},
+	alignment: {
+		options: [
+			'left', 'right', 'center'
+		]
+	},
+
+	fontFamily: {
+		options: [
+
+			'default',
+			'Franklin Gothic Medium, Arial Narrow, Arial, sans-serif',
+			'Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif',
+			'Georgia, Times New Roman, Times, serif',
+			'Verdana, Geneva, Tahoma, sans-serif',
+			'Cambria, Cochin, Georgia, Times, Times New Roman, serif'
+
+		],
+		supportAllValues: true
+	},
+
+	fontSize: {
+		options: [ 'default', 7, 8, 9, 10, 12, 14, 16, 18, 20 ],
+		supportAllValues: true
+	},
+
 	image: {
 		toolbar: [
 			'imageStyle:full',
